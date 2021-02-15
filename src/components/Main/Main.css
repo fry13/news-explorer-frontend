@@ -1,0 +1,36 @@
+.main__results {
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-color: #F5F6F7;    
+}
+
+.main__results_invisible {
+    display: none;
+}
+
+.main__not-found {
+    background-color: #F5F6F7;
+}
+
+.main__not-found_invisible {
+    display: none;
+}
+
+.main__preloader {
+    background-color: #F5F6F7;
+    display: flex;
+    position: relative;
+}
+
+.main__preloader_invisible {
+    display: none;
+}
+
+@media screen and (max-width: 760px) {
+    .main__results {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+}
