@@ -19,6 +19,14 @@
     font-weight: 400;
 }
 
+
+@font-face {
+    src: url('../../fonts/inter-regular.woff') format('woff');
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+}
+
 .search-form {
     padding-top: 80px;
     width: 42.222%;
@@ -42,10 +50,10 @@
     margin-bottom: 64px;
     font-family: 'Roboto', sans-serif;
     font-style: normal;
-    color: #FFF;
     font-weight: 400;
     font-size: 18px;
-    line-height: 1.33;
+    line-height: 1.333;
+    color: #FFF;
     width: 92.927%;
 }
 
@@ -62,11 +70,25 @@
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     font-family: 'Roboto', sans-serif;
     font-style: normal;
-    color: #1A1B22;
     font-weight: 400;
     font-size: 16px;
     line-height: 1.375;
+    color: #1A1B22;
     box-sizing: border-box;
+}
+
+.search-form__input-error {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.25;
+    width: 100%;
+    color: #FFF;
+    margin-top: 5px;
+    padding-left: 15px;
+    margin-bottom: 13px;
+    display: block;
 }
 
 .search-form__submit {
@@ -79,7 +101,7 @@
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
-    line-height: 1.33;
+    line-height: 1.333;
     color: #FFF;
     cursor: pointer;
     position: absolute;

@@ -5,5 +5,9 @@ export const CONSTANTS = {
     LOGIN: 'Войти',
     REGISTER: 'Зарегистрироваться',
     LOGIN_TITLE: 'Вход',
-    REGISTER_TITLE: 'Регистрация'
+    REGISTER_TITLE: 'Регистрация',
+    REQUIRED_INPUT: 'Заполните обязательное поле',
+    TOO_SHORT: 'Значение в поле слишком короткое',
+    TOO_LONG: 'Значение в поле слишком длинное',
+    NOT_EMAIL: 'Укажите корректный e-mail',
 }

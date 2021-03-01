@@ -1,35 +1,40 @@
 @font-face {
-    src: url('../../fonts/inter-regular.woff') format('woff');
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-}
-
-@font-face {
-    src: url('../../fonts/inter-medium.woff') format('woff');
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-}
-
-@font-face {
-    src: url('../../fonts/roboto-medium.woff') format('woff');
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
+    font-display: swap;
+    src: url('../../fonts/roboto-medium.woff') format('woff');
 }
 
 @font-face {
-    src: url('../../fonts/roboto-black.woff') format('woff');
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 900;
+    font-display: swap;
+    src: url('../../fonts/roboto-black.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../../fonts/inter-regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('../../fonts/inter-medium.woff') format('woff');
 }
 
 .popup {
     display: flex;
     visibility: hidden;
     opacity: 0;
+    transition: visibility 0s linear 500ms, opacity 500ms;
     position: fixed;
     top: 0;
     left: 0;
@@ -41,26 +46,27 @@
 .popup_opened {
     visibility: visible;
     opacity: 1;
+    transition: visibility 0s, opacity 500ms linear;
 }
 
 .popup__form {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    box-sizing: border-box;
     align-self: center;
     margin-left: auto;
     margin-right: auto;
     width: 430px;
+    position: relative;
     background: #FFF;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
     padding-top: 34px;
     padding-bottom: 28px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
-.popup__submit {
-    width: 85%;
+.popup__submit-button {
+    width: 83.25%;
     height: 64px;
     padding: 0;
     margin: 8px auto 16px;
@@ -79,22 +85,22 @@
     border-radius: 100px;
   }
   
-  .popup__submit:hover {
+  .popup__submit-button:hover {
     background: #347EFF;
   }
 
-  .popup__submit_inactive {
-    background-color: #E6E8EB;
+  .popup__submit-button_inactive {
     color: #B6BCBF;
+    background-color: #E6E8EB;
   }
 
-  .popup__submit_inactive:hover {
-    background-color: #E6E8EB;
+  .popup__submit-button_inactive:hover {
     color: #B6BCBF;
+    background-color: #E6E8EB;
   }
 
   .popup__input {
-    width: 85%;
+    width: 83.25%;
     min-width: 200px;
     display: block;
     margin: 0 auto 16px;
@@ -102,11 +108,11 @@
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
-    line-height: 1.2;
+    line-height: 1.208;
     color: #2F71E5;
 }
 
-.popup__title {
+.popup__header {
     margin: 0 auto 28px;
     font-family: 'Roboto', sans-serif;
     font-style: normal;
@@ -114,11 +120,11 @@
     font-size: 24px;
     justify-content: left;
     line-height: 1.4;
-    width: 85%;
+    width: 83.25%;
     min-width: 200px;
 }
 
- .popup__field-error {
+.popup__field-error {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -128,6 +134,20 @@
     color: #FF0000;
     margin-top: 5px;
     margin-bottom: 13px;
+    display: block;
+}
+
+.popup__submission-error {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.25;
+    width: 100%;
+    color: #FF0000;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 8px;
     display: block;
 }
 
@@ -193,7 +213,7 @@
 }
 
 @media screen and (max-width: 500px) {
-    .popup__title {
+    .popup__header {
         margin-bottom: 22px;
         width: 90%;
     }
@@ -216,7 +236,7 @@
         width: 90%;
     }
 
-    .popup__submit {
+    .popup__submit-button {
         width: 90%;
       }
 

@@ -3,8 +3,9 @@ import './Preloader.css';
 
 function Preloader() {
     return (
-        <>            
-            <p className="preloader__description">Идет поиск новостей...</p>
+        <>
+            <i className="preloader"></i>
+            <p className="preloader__info">Идет поиск новостей...</p>
         </>
     );
 }

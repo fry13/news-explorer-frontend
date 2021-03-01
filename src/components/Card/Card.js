@@ -2,7 +2,7 @@ import React, {useCallback} from 'react';
 import './Card.css';
 import newsphoto from '../../images/image_01.jpg';
 
-function Card({ isLoggedIn, isItSavedNewsPage }) {
+function Card({ isLoggedIn, isItSavedCardsPage }) {
     const [isSaved, setSaved] = React.useState(false);
 
     const toggleSaveCard = useCallback(() => {
@@ -11,7 +11,7 @@ function Card({ isLoggedIn, isItSavedNewsPage }) {
     return (
         <li><figure className="card">
             { 
-                isItSavedNewsPage ?
+                isItSavedCardsPage ?
                 <button type="button" className="card__delete-button"></button>
                     :
                 <button type="button" onClick={toggleSaveCard} className={
@@ -21,7 +21,7 @@ function Card({ isLoggedIn, isItSavedNewsPage }) {
                 } 
                 disabled={isLoggedIn ? false : true}></button>
             }
-            <p className={isItSavedNewsPage ? "card__key-word card__key-word_visible" : "card__key-word"}>Природа</p>
+            <p className={isItSavedCardsPage ? "card__key-word card__key-word_visible" : "card__key-word"}>Природа</p>
             <img className="card__photo" src={newsphoto} alt="Прикреплённое изображение"></img>
             <figcaption className="card__caption">
                 <p className="card__date">21 декабря, 2021</p>

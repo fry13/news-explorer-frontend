@@ -1,31 +1,52 @@
 import React from 'react';
-import About from '../About/About.js';
-import NotFound from '../NotFound/NotFound.js';
-import CardList from '../CardList/CardList.js';
-import Preloader from '../Preloader/Preloader.js';
 import './Main.css';
+import About from '../About/About.js';
+import Preloader from '../Preloader/Preloader.js';
+import NotFound from '../NotFound/NotFound.js';
+import SearchError from '../SearchError/SearchError.js';
+import NewsCardList from '../NewsCardList/NewsCardList.js';
 
-function Main ({isResultShown, isPreloaderShown, toggleNotFound, isNotFoundShown, isLoggedIn}) {
+function Main ({ searchResultsErr, 
+                    isPreloaderShown, 
+                    isNotFoundShown,
+                    newsToDisplay,
+                    displayNews,
+                    isMoreButtonDisplayed,
+                    savedNews,
+                    isUserLoggedIn,
+                    onSave, 
+                    onUnsave }) {
+
+    const [resultsToDisplay, setResultsToDisplay] = React.useState(newsToDisplay);
+
+    React.useEffect(() => {
+        setResultsToDisplay(newsToDisplay);
+    }, [newsToDisplay, savedNews]);
+
     return (
-        <main className="main">
-            <section className={isResultShown ? "main__results" : "main__results main__results_invisible"}>
-                <h1 className="news-list__title">
-                    Результаты поиска
-                </h1>
-                <CardList toggleNotFound={toggleNotFound} isLoggedIn={isLoggedIn}/>
-                <button className="news-list__more-button" type="button" onClick={toggleNotFound}>
-                    Показать ещё
-                </button>
+        <main className="content-container">
+            <section className={resultsToDisplay.length !== 0 ? "content-container__results" : "content-container__results content-container__results_invisible"}>
+                <h1 className="news-list__title">Результаты поиска</h1>
+                {resultsToDisplay.length !== 0 && <NewsCardList articlesToDisplay={resultsToDisplay}
+                    displayCards={displayNews}
+                    isMoreButtonNeeded={isMoreButtonDisplayed}
+                    savedArticles={savedNews}
+                    isLoggedIn={isUserLoggedIn}
+                    handleSaveClick={onSave}
+                    handleUnsaveClick={onUnsave} />}
             </section>
-            <section className={isPreloaderShown ? "main__preloader" : "main__preloader main__preloader_invisible"}>
+            <section className={isPreloaderShown ? "content-container__preloader" : "content-container__preloader content-container__preloader_invisible"}>
                 <Preloader />
             </section>
-            <section className={isNotFoundShown ? "main__not-found" : "main__not-found main__not-found_invisible"}>
+            <section className={isNotFoundShown ? "content-container__error" : "content-container__error content-container__error_invisible"}>
                 <NotFound />
             </section>
-            <section className="main__about">
+            <section className={searchResultsErr ? "content-container__error" : "content-container__error content-container__error_invisible"}>
+                <SearchError />
+            </section>
+            <section className="content-container__about-author" >
                 <About />
-            </section> 
+            </section>
         </main>
     );
 }
