@@ -38,5 +38,5 @@ class NewsApi {
 }
 
 export const newsApi = new NewsApi({
-    baseUrl: `https://nomoreparties.co/news/v2/top-headlines?country=us&apiKey=a438cc64bbc444e5a017afade55d1f0d`,
+    baseUrl: `https://nomoreparties.co/news/v2/everything?top-headlines?&apiKey=a438cc64bbc444e5a017afade55d1f0d`,
 });

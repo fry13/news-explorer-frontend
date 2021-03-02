@@ -92,13 +92,14 @@ export const login = (email, password) => {
 
   export const saveNews = (keyword, title, text, date, source, link, image) => {
     const token = getToken();
-    return fetch(`${BASE_URL}${ROUTES_MAP.ARTICLES}/`, {
+    
+    return fetch(`${BASE_URL}${ROUTES_MAP.ARTICLES}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
       },
-      body: ({
+      body: JSON.stringify({
         keyword, 
         title, 
         text, 

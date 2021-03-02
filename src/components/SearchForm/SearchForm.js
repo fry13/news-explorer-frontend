@@ -27,7 +27,7 @@ function SearchForm({ receiveResults }) {
     const handleSubmit = useCallback((e) => {
         e.preventDefault();
         const today = new Date().toISOString();
-        const sevenDaysEarlier = new Date((Date.now() - 604800000)).toISOString();
+        const sevenDaysEarlier = new Date((Date.now() - 7*24*60*60*1000)).toISOString();
         receiveResults(searchValue.value, sevenDaysEarlier, today);
         setSearchValue({ value: "" });
     }, [searchValue, receiveResults]);
