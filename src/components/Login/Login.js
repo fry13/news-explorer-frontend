@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { CONSTANTS } from '../../utils/constants';
+import { CONSTANTS } from '../../utils/constants.js';
 import PopupWithForm from '../PopupWithForm/PopupWithForm.js';
 
 function Login({ onLogin, isPopupOpen, handleOverlayClick, onCloseClick, onRegisterClick, loginError }) {
