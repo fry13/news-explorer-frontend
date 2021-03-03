@@ -1,0 +1,95 @@
+@font-face {
+    src: url('../../fonts/robotoslab-regular.woff') format('woff');
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 400;
+}
+
+.saved-cards-header {
+    padding-top: 40px;
+    padding-left: 7.22%;
+    width: 50%;
+    margin: 0;
+    padding-bottom: 56px;
+}
+
+.saved-cards-header__title {
+    margin-top: 0;
+    margin-bottom: 28px;
+    font-family: 'Roboto Slab', sans-serif;
+    font-style: normal;
+    color: rgba(26, 27, 34, 0.5);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.33;
+}
+
+.saved-cards-header__quantity {
+    width: 74.5%;
+    margin-bottom: 30px;
+    font-family: 'Roboto Slab', sans-serif;
+    font-style: normal;
+    color: #1A1B22;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1.15;
+}
+
+.saved-cards-header__key-words {
+    margin-bottom: 0;
+    font-family: 'Roboto Slab', sans-serif;
+    font-style: normal;
+    color: #1A1B22;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.33;
+}
+
+@media screen and (max-width: 760px) {
+    .saved-cards-header {
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-top: 24px;
+        padding-bottom: 32px;
+        width: 90%;
+    }
+
+    .saved-cards-header__title {
+        margin-bottom: 16px;
+        font-size: 14px;
+        line-height: 1.714;
+    }
+    
+    .saved-cards-header__quantity {
+        width: 47.19%;
+        margin-bottom: 16px;
+        font-size: 30px;
+        line-height: 1.133;
+    }
+    
+    .saved-cards-header__key-words {
+        font-size: 14px;
+        line-height: 1.714;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .saved-cards-header {
+        padding-top: 8px;
+    }
+
+    .saved-cards-header__title {
+        font-size: 12px;
+        line-height: 2;
+    }
+    
+    .saved-cards-header__quantity {
+        width: 100%;
+
+    }
+    
+    .saved-cards-header__key-words {
+        font-size: 18px;
+        line-height: 1.33;
+    }
+}
