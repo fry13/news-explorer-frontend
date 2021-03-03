@@ -9,12 +9,13 @@ import SavedNews from '../SavedNews/SavedNews.js';
 import Login from '../Login/Login.js';
 import React, { useCallback } from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
-import PopupSuccessReg from '../PopupSuccessReg/PopupSuccessReg';
+import PopupInfo from '../PopupInfo/PopupInfo.js';
 import { newsApi } from '../../utils/NewsApi';
 import { register, login, getUserData, getSavedNews, saveNews, unsaveNews } from '../../utils/MainApi';
 import { CurrentUserContext } from '../../context/currentUserContext';
 import { getToken, removeToken } from "../../utils/token";
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import { CONSTANTS } from '../../utils/constants';
 
 function App() {
   const [isMenuOpen, setMenuOpen] = React.useState(false);
@@ -22,7 +23,7 @@ function App() {
   const [isNotFoundOpen, setNotFoundOpen] = React.useState(false);
   const [isRegPopupOpen, setRegPopupOpen] = React.useState(false);
   const [isLoginPopupOpen, setLoginPopupOpen] = React.useState(false);
-  const [isSuccessRegPopupOpen, setSuccessRegPopupOpen] = React.useState(false);
+  const [isPopupInfoOpen, setPopupInfoOpen] = React.useState({isOpen: false, title: 'vv', button: 'zz'});
   const [articles, setArticles] = React.useState([]);
   const [isNewsLoading, setNewsLoading] = React.useState(false);
   const [isSearchError, setSearchError] = React.useState(false);
@@ -126,7 +127,7 @@ function App() {
 
   const closeAllPopups = useCallback(() => {
     setRegPopupOpen(false);
-    setSuccessRegPopupOpen(false);
+    setPopupInfoOpen({isOpen: false, title: '', button: ''});
     setLoginPopupOpen(false);
   }, []);
 
@@ -135,7 +136,7 @@ function App() {
       .then((res) => {
         if (res) {
           setRegPopupOpen(false);
-          setSuccessRegPopupOpen(true);
+          setPopupInfoOpen({isOpen: true, title: CONSTANTS.INFO_SUCCESS_TITLE, button: CONSTANTS.INFO_SUCCESS_BUTTON});
         }
       })
       .catch((err) => {
@@ -185,8 +186,8 @@ const prepareAppForLogin = useCallback((jwt) => {
     setLoginPopupOpen(true);
   }, []);
 
-  const handleLoginClick = useCallback(() => {
-    setSuccessRegPopupOpen(false);
+  const handleLoginClick = useCallback(() => {    
+    setPopupInfoOpen({isOpen: false, title: '', button: ''});
     setLoginPopupOpen(true);
   }, []);
 
@@ -241,6 +242,11 @@ const prepareAppForLogin = useCallback((jwt) => {
       }
     });
   }, [closeAllPopups]);
+
+  const handleLoggedOutClick = useCallback(() => {
+    closeAllPopups();
+    setPopupInfoOpen({isOpen: true, title: CONSTANTS.INFO_REG_TITLE, button: CONSTANTS.INFO_REG_BUTTON});
+  }, []);
 
   const handleSignOut = useCallback(() => {
     localStorage.removeItem('articles');
@@ -327,6 +333,7 @@ const prepareAppForLogin = useCallback((jwt) => {
                 isUserLoggedIn={isLoggedIn} 
                 onSave={handleSaveClick} 
                 onUnsave={handleUnsaveClick}
+                onLoggedOutClick={handleLoggedOutClick}
           />
         </Route>
       </Switch>
@@ -353,11 +360,13 @@ const prepareAppForLogin = useCallback((jwt) => {
           />
       } 
       {
-        isSuccessRegPopupOpen && 
-        <PopupSuccessReg isOpen={isSuccessRegPopupOpen} 
+        isPopupInfoOpen && 
+        <PopupInfo isOpen={isPopupInfoOpen.isOpen} 
                         onClose={closeAllPopups} 
                         onLogin={handleLoginClick}
                         onOverlayAndEscClick={handleOverlayClose}
+                        title={isPopupInfoOpen.title}
+                        button={isPopupInfoOpen.button}
           />
       }
     </CurrentUserContext.Provider>

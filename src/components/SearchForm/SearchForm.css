@@ -89,6 +89,7 @@
     padding-left: 15px;
     margin-bottom: 13px;
     display: block;
+    position: absolute;
 }
 
 .search-form__submit {

@@ -1,11 +1,8 @@
 import React, { useCallback } from 'react';
 import './SearchForm.css';
-import { CONSTANTS } from '../../utils/constants';
 
 function SearchForm({ receiveResults }) {
-    const [searchValue, setSearchValue] = React.useState({
-        value: ""
-    });
+    const [searchValue, setSearchValue] = React.useState({ value: "" });
     const [isValid, setValid] = React.useState(false);
     const [isErrorDisplayed, setErrorDisplayed] = React.useState(false);
 
@@ -33,15 +30,14 @@ function SearchForm({ receiveResults }) {
     }, [searchValue, receiveResults]);
 
     return (
-            <form className="search-form" onSubmit={handleSubmit} noValidate>
+            <div className="search-form">
                 <h1 className="search-form__title">Что творится в мире?</h1>
                 <p className="search-form__description">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>
-                <div className="search-form__search">
+                <form className="search-form__search" onSubmit={handleSubmit}>
                     <input className="search-form__input" placeholder="Введите тему новости" type="text" onChange={handleChange} value={searchValue.value} required></input>
-                    {isErrorDisplayed && <span className="search-form__input-error">{CONSTANTS.REQUIRED_INPUT}</span>}
                     <button className="search-form__submit" type="submit" disabled={isValid ? false : true}>Искать</button>
-                </div>
-            </form> 
+                </form>
+            </div> 
     );
 }
 

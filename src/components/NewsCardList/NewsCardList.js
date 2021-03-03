@@ -3,10 +3,10 @@ import './NewsCardList.css';
 import NewsCard from '../NewsCard/NewsCard.js';
 import { useLocation } from "react-router-dom";
 import { ROUTES_MAP } from '../../utils/routesMap';
-import SaveButton from '../SaveButton/SaveButton.js';
+import Save from '../Save/Save.js';
 import DeleteButton from '../DeleteButton/DeleteButton.js';
 
-function NewsCardList({ articlesToDisplay, displayCards, isMoreButtonNeeded, savedArticles, isLoggedIn, handleSaveClick, handleUnsaveClick }) {
+function NewsCardList({ articlesToDisplay, displayCards, isMoreButtonNeeded, savedArticles, isLoggedIn, handleSaveClick, handleUnsaveClick, handleLoggedOutClick }) {
     const location = useLocation();
     const isSavedNewsOpen = (location.pathname === ROUTES_MAP.SAVED_NEWS);
 
@@ -36,10 +36,11 @@ function NewsCardList({ articlesToDisplay, displayCards, isMoreButtonNeeded, sav
                             actionButton={isSavedNewsOpen ?
                                             <DeleteButton onClick={handleUnsaveClick}/>
                                             :
-                                            <SaveButton isUserLoggedIn={isLoggedIn}
+                                            <Save isUserLoggedIn={isLoggedIn}
                                                         onSave={handleSaveClick}
                                                         onUnsave={handleUnsaveClick}
                                                         isItSaved={isNewsSaved}
+                                                        onLoggedOutClick={handleLoggedOutClick}
                                 />
                             }
                             picture={article.image}

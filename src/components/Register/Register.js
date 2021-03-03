@@ -3,6 +3,9 @@ import { CONSTANTS } from '../../utils/constants';
 import PopupWithForm from '../PopupWithForm/PopupWithForm.js';
 
 function Register({ onRegister, isPopupOpen, handleOverlayClick, onCloseClick, onLoginClick, registrationError }) {
+    
+    const [disabledState, setDisabledState] = React.useState(false);
+    
     const [formValues, setFormValues] = React.useState({
         userEmail: "",
         userPassword: "",
@@ -50,9 +53,11 @@ function Register({ onRegister, isPopupOpen, handleOverlayClick, onCloseClick, o
         setIsValid(target.closest("form").checkValidity());
     }, [formValues, setInputErrors]);
 
+
+
     const handleSubmit = useCallback((event) => {
         event.preventDefault();
-        onRegister(formValues.userName, formValues.userEmail, formValues.userPassword);
+        onRegister(formValues.userName, formValues.userEmail, formValues.userPassword)
         resetForm();
     }, [formValues, onRegister, resetForm]);
 
@@ -76,7 +81,8 @@ function Register({ onRegister, isPopupOpen, handleOverlayClick, onCloseClick, o
                             type="email" 
                             name="userEmail" 
                             placeholder="Введите почту" 
-                            inputMode="email"/>
+                            inputMode="email"
+                            disabled={disabledState}/>
                     {errors.userEmail.length > 0 && <span className="popup__field-error">{errors.userEmail}</span>}
                 </label>
 
@@ -90,7 +96,8 @@ function Register({ onRegister, isPopupOpen, handleOverlayClick, onCloseClick, o
                             type="text" 
                             name="userPassword" 
                             placeholder="Введите пароль" 
-                            inputMode="search" />
+                            inputMode="search"
+                            disabled={disabledState} />
                     {errors.userPassword.length > 0 && <span className="popup__field-error">{errors.userPassword}</span>}
                 </label>
 
@@ -104,7 +111,8 @@ function Register({ onRegister, isPopupOpen, handleOverlayClick, onCloseClick, o
                             type="text" 
                             name="userName" 
                             placeholder="Введите своё имя" 
-                            inputMode="search" />
+                            inputMode="search"
+                            disabled={disabledState} />
                     {errors.userName.length > 0 && <span className="popup__field-error">{errors.userName}</span>}
                 </label>
                 {registrationError && <span className="popup__submission-error">{registrationError}</span>}

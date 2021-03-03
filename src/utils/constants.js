@@ -10,4 +10,8 @@ export const CONSTANTS = {
     TOO_SHORT: 'Значение в поле слишком короткое',
     TOO_LONG: 'Значение в поле слишком длинное',
     NOT_EMAIL: 'Укажите корректный e-mail',
+    INFO_SUCCESS_TITLE: 'Пользователь успешно зарегистрирован!',
+    INFO_SUCCESS_BUTTON: 'Войти',
+    INFO_REG_TITLE: 'Для того, чтобы пользоваться функцией закладок, необходимо войти!',
+    INFO_REG_BUTTON: 'Войти'
 }
